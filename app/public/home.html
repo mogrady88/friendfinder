@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Friend Finder</title>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="jumbotron">
+      <h1 class="text-center">Friend finder</h1>
+      <hr>
+      <h2 class="text-center">Answer some questions and we will match you with a friend</h2>
+      <br>
+
+      <div class="text-center">
+        <a href="/survey"><button class="btn btn-lg btn-primary">Take the survey</button></a>
+        
+      </div>
+
+    </div>
+    <div id="friends">
+
+    </div>>
+
+    </div>
+    <script type="text/javascript">
+        function getFriends() {
+    
+          var currentURL = window.location.origin;
+    
+          $.ajax({ url: currentURL + "/api/survey", method: "GET" })
+            .then(function(friendData) {
+                console.log(friendData);
+            });
+        }
+    </script>
+  </div>

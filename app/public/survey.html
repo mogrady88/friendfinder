@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Friend Finder</title>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="jumbotron">
+      <h1 class="text-center">Friend finder</h1>
+      <hr>
+      <h2 class="text-center">Answer some questions and we will match you with a friend</h2>
+      <br>
+
+      <div class="text-center">
+        <a href="/"><button class="btn btn-lg btn-primary">Home</button></a>
+      </div>
+
+    </div>
+    <h3 class="text-center">List your name and a photo to match with friends!</h3>
+    <div class="form-group form-group-sm">
+        <label class="col-sm-2 control-label" for="formGroupInputSmall">Name</label>
+        <div class="col-sm-10">
+          <input class="form-control" type="text" id="nameInput">
+        </div>
+      </div> <div class="form-group form-group-sm">
+        <label class="col-sm-2 control-label" for="formGroupInputSmall">Link a photo</label>
+        <div class="col-sm-10">
+          <input class="form-control" type="text" id="photoInput">
+        </div>
+        <br>
+    <h3 class="text-center">Answer the following questions: (1 strongly dislike - 5 absolutely love it)</h3>
+    <form>
+    <div class="form-group form-group-sm">
+        <label class="col-sm-2 control-label" for="formGroupInputSmall">Do you like Rick and Morty?</label>
+        <div class="col-sm-10">
+          <input class="form-control" type="number" pattern="[1-5]" id="1">
+        </div>
+      </div>
+    <div class="form-group form-group-sm">
+        <label class="col-sm-2 control-label" for="formGroupInputSmall">Do you like to be outdoors?</label>
+        <div class="col-sm-10">
+          <input class="form-control" type="number" id="2">
+        </div>
+      </div>
+    <div class="form-group form-group-sm">
+        <label class="col-sm-2 control-label" for="formGroupInputSmall">Do you enjoy relaxing on the beach?</label>
+        <div class="col-sm-10">
+          <input class="form-control" type="number" id="3">
+        </div>
+      </div>
+    <div class="form-group form-group-sm">
+        <label class="col-sm-2 control-label" for="formGroupInputSmall">Your ideal friend is very social</label>
+        <div class="col-sm-10">
+          <input class="form-control" type="number" id="4">
+        </div>
+      </div>
+    <div class="form-group form-group-sm">
+        <label class="col-sm-2 control-label" for="formGroupInputSmall">You prefer to stay in and read a book instead of going to a bar</label>
+        <div class="col-sm-10">
+          <input class="form-control" type="number" id="5" >
+        </div>
+      </div>
+    <div class="form-group form-group-sm">
+        <label class="col-sm-2 control-label" for="formGroupInputSmall">You enjoy playing music instead of listening to it</label>
+        <div class="col-sm-10">
+          <input class="form-control" type="number" id="6">
+        </div>
+      </div>
+    <div class="form-group form-group-sm">
+        <label class="col-sm-2 control-label" for="formGroupInputSmall">You prefer dogs over cats</label>
+        <div class="col-sm-10">
+          <input class="form-control" type="number" id="7">
+        </div>
+      </div>
+    <div class="form-group form-group-sm">
+        <label class="col-sm-2 control-label" for="formGroupInputSmall">You would rather stay at home than travel to a new place</label>
+        <div class="col-sm-10">
+          <input class="form-control" type="number" id="8">
+        </div>
+      </div>
+    <div class="form-group form-group-sm">
+        <label class="col-sm-2 control-label" for="formGroupInputSmall">Your ideal date centers around conversation</label>
+        <div class="col-sm-10">
+          <input class="form-control" type="number" id="9">
+        </div>
+      </div>
+    <div class="form-group form-group-sm">
+        <label class="col-sm-2 control-label" for="formGroupInputSmall">You prefer your food be sweet over savory</label>
+        <div class="col-sm-10">
+          <input class="form-control" type="number" id="10">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary submit" data-toggle="modal" data-target="#exampleModal">Submit</button>
+    </form>
+
+    <div class="modal" id="myModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="matched"></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <img id="matchPic">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <script type="text/javascript">
+        $(".submit").on("click", function(event) {
+          event.preventDefault();
+
+          var surveyAnswers = [
+              $("#1").val().trim(),
+              $("#2").val().trim(),
+              $("#3").val().trim(),
+              $("#4").val().trim(),
+              $("#5").val().trim(),
+              $("#6").val().trim(),
+              $("#7").val().trim(),
+              $("#8").val().trim(),
+              $("#9").val().trim(),
+              $("#10").val().trim(),
+          ];
+
+          var newFriend = {
+            name: $("#nameInput").val().trim(),
+            photo: $("#photoInput").val().trim(),
+            scores: surveyAnswers
+          };
+    
+        //   console.log(newFriend);
+
+          $.post("/api/survey", newFriend,
+            function(data) {
+            console.log(data.name);
+            console.log(data.photo);
+
+            $("#myModal").modal("show");
+            $("#matched").html("<h2>"+data.name+"</h2>");
+            $("#matchPic").attr("src", data.photo)
+
+            $("#nameInput").val('');
+            $("#photoInput").val('');
+
+            $("#1").val('');
+            $("#2").val('');
+            $("#3").val('');
+            $("#4").val('');
+            $("#5").val('');
+            $("#6").val('');
+            $("#7").val('');
+            $("#8").val('');
+            $("#9").val('');
+            $("#10").val('');
+            });
+    
+        });
+    
+    var currentURL = window.location.origin;
+
+    // $.ajax({ url: currentURL + "/api/survey", method: "GET" })
+    //   .then(function(match) {
+    //       console.log(match);
+    //       $("#matchName").text(match.name);
+    //       $("#matchShow").add(match.picture);
+    //   });
+    </script>
+    
+  </div>
