@@ -143,8 +143,6 @@
             photo: $("#photoInput").val().trim(),
             scores: surveyAnswers
           };
-    
-        //   console.log(newFriend);
 
           $.post("/api/survey", newFriend,
             function(data) {
@@ -171,15 +169,6 @@
             });
     
         });
-    
-    var currentURL = window.location.origin;
-
-    // $.ajax({ url: currentURL + "/api/survey", method: "GET" })
-    //   .then(function(match) {
-    //       console.log(match);
-    //       $("#matchName").text(match.name);
-    //       $("#matchShow").add(match.picture);
-    //   });
     </script>
     
   </div>
